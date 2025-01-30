@@ -4,14 +4,22 @@ import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
 // middleware allow to extract json from user request body
+
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({
+    origin: "*",
+    credentials: true
+}))
+
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes)
 function testRoute(req, res) {
