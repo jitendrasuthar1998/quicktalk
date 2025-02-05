@@ -21,7 +21,7 @@ app.use(cookieParser());
 
 
 app.use("/api/auth", authRoutes);
-app.use("/api/message", messageRoutes)
+app.use("/api/messages", messageRoutes)
 function testRoute(req, res) {
     console.log("testRoute");
 }
