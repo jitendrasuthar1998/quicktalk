@@ -5,10 +5,11 @@ import messageRoutes from "./routes/message.route.js";
 import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import { app, server } from "./lib/socket.js";
 
 
 dotenv.config();
-const app = express();
+
 const PORT = process.env.PORT;
 
 // middleware allow to extract json from user request body
@@ -29,7 +30,7 @@ function testRoute(req, res) {
 // app.get("/", testRoute);
 
 
-app.listen(8000, () => {
+server.listen(8000, () => {
     console.log("listening on", 8000)
     connectDB();
 });
